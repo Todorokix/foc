@@ -38,7 +38,7 @@ function generateRandomIP() {
 $ipx = generateRandomIP();
 $ipxx = generateRandomIP();
 function curl($url, $method, $data = null) {
-	global $ipx,$ipxx,$vvv;
+	
     $header = array(
         "Host: cryptovertz.com",
         "origin: https://cryptovertz.com",
@@ -68,7 +68,7 @@ function curl($url, $method, $data = null) {
 }
 
 function curl_request($url, $method, $data = null) {
-	global $ipx,$ipxx,$vvv;
+	
     $header = array(
         "Host: flukelabs.com",
         "origin: https://flukelabs.com",
