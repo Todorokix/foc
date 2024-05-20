@@ -150,7 +150,7 @@ $lef = explode(' / 50</button>',explode('<button class="btn btn-danger">Limit: '
 
 	
 
-sleep(11);
+sleep(71);
 $capv = solveCaptcha();
 
 
