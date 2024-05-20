@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-echo " HAPPY LOOTING!! \n";
+echo " •HAPPY LOOTING• \n";
 
 unlink('cookie.txt');
 
@@ -22,31 +22,20 @@ function getName($n) {
 
 $mnk = getName($n);
 $rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
-function generateRandomIP() {
-    // Generate random values for each octet
-    $octet1 = rand(1, 255);
-    $octet2 = rand(0, 255);
-    $octet3 = rand(0, 255);
-    $octet4 = rand(1, 255);
+$vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko) edge X/".$mnk."";
 
-    // Combine the octets into a single IP address string
-    $randomIP = "$octet1.$octet2.$octet3.$octet4";
 
-    return $randomIP;
-}
-$ipx = generateRandomIP();
-$ipxx = generateRandomIP();
+
 function curl($url, $method, $data = null) {
-	
+	global $vvv;
     $header = array(
         "Host: cryptovertz.com",
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.17",
-        "X-Forwarded-For: 110.4.44.250",
-        "user-agent: ".$vvv.""
+        "X-Forwarded-For: 98.206.244.38",
+        "X-Forwarded-For: 61.6.255.9",
+        "user-agent: ".$vvv."",
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -68,15 +57,15 @@ function curl($url, $method, $data = null) {
 }
 
 function curl_request($url, $method, $data = null) {
-	
+	global $vvv;
     $header = array(
         "Host: flukelabs.com",
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.17",
-        "X-Forwarded-For: 110.4.44.250",
-        "user-agent: ".$vvv.""
+        "X-Forwarded-For: 98.206.244.38",
+        "X-Forwarded-For: 61.6.255.9",
+        "user-agent: ".$vvv."",
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -169,7 +158,6 @@ $url = 'https://cryptovertz.com/rewards/reward.php';
 $data = "rcapchta_response=".$capv."";
 $response = curl($url, 'POST', $data);
 $suc = explode("<a class='btn btn-primary' href='rewards/start.php?",$response);
-if (strpos($suc, "limit reached") !== false) {echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
 $user = explode('&crypto',explode('user=', $response)[1])[0];
 
 
@@ -179,6 +167,6 @@ $wak = date("[H:i]", $timestamp);
 echo" ".$wak." [".$lef."] ".$suc[0]." \n";
 $url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
 $str = curl($url, 'GET');
-//if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
+if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
 endwhile;
 
