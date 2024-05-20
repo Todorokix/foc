@@ -22,7 +22,7 @@ function getName($n) {
 
 $mnk = getName($n);
 $rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko) edge X/".$mnk."";
+$vvv = "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
 function generateRandomIP() {
     // Generate random values for each octet
     $octet1 = rand(1, 255);
@@ -44,9 +44,9 @@ function curl($url, $method, $data = null) {
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: ".$ipx."",
-        "X-Forwarded-For: ".$ipxx."",
-        "user-agent: ".$vvv."",
+        "X-Forwarded-For: 223.28.52.17",
+        "X-Forwarded-For: 110.4.44.250",
+        "user-agent: ".$vvv.""
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -74,9 +74,9 @@ function curl_request($url, $method, $data = null) {
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: ".$ipx."",
-        "X-Forwarded-For: ".$ipxx."",
-        "user-agent: ".$vvv."",
+        "X-Forwarded-For: 223.28.52.17",
+        "X-Forwarded-For: 110.4.44.250",
+        "user-agent: ".$vvv.""
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
