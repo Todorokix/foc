@@ -1,6 +1,7 @@
 <?php
-system('clear');
 error_reporting(0);
+echo " HAPPY LOOTING!! \n";
+
 unlink('cookie.txt');
 
 
