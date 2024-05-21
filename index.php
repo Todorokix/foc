@@ -44,8 +44,8 @@ function curl($url, $method, $data = null) {
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.71",
-        "X-Forwarded-For: 110.4.44.57",
+        "X-Forwarded-For: 203.28.52.71",
+        "X-Forwarded-For: 38.4.44.57",
         "user-agent: ".$vvv.""
     );
     $ch = curl_init();
@@ -74,8 +74,8 @@ function curl_request($url, $method, $data = null) {
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.71",
-        "X-Forwarded-For: 110.4.44.57",
+        "X-Forwarded-For: 203.28.52.71",
+        "X-Forwarded-For: 38.4.44.57",
         "user-agent: ".$vvv.""
     );
     $ch = curl_init();
