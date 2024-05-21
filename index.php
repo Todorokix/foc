@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-echo " •HAPPY LOOTING• \n";
+echo " HAPPY LOOTING!! \n";
 
 unlink('cookie.txt');
 
@@ -22,10 +22,21 @@ function getName($n) {
 
 $mnk = getName($n);
 $rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko) edge X/".$mnk."";
+$vvv = "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
+function generateRandomIP() {
+    // Generate random values for each octet
+    $octet1 = rand(1, 255);
+    $octet2 = rand(0, 255);
+    $octet3 = rand(0, 255);
+    $octet4 = rand(1, 255);
 
+    // Combine the octets into a single IP address string
+    $randomIP = "$octet1.$octet2.$octet3.$octet4";
 
-
+    return $randomIP;
+}
+$ipx = generateRandomIP();
+$ipxx = generateRandomIP();
 function curl($url, $method, $data = null) {
 	global $vvv;
     $header = array(
@@ -33,9 +44,9 @@ function curl($url, $method, $data = null) {
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 98.206.244.38",
-        "X-Forwarded-For: 61.6.255.9",
-        "user-agent: ".$vvv."",
+        "X-Forwarded-For: 223.28.52.7",
+        "X-Forwarded-For: 110.4.44.50",
+        "user-agent: ".$vvv.""
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -63,9 +74,9 @@ function curl_request($url, $method, $data = null) {
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 98.206.244.38",
-        "X-Forwarded-For: 61.6.255.9",
-        "user-agent: ".$vvv."",
+        "X-Forwarded-For: 223.28.52.7",
+        "X-Forwarded-For: 110.4.44.50",
+        "user-agent: ".$vvv.""
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -127,8 +138,8 @@ $captcha = str_replace("OK|", "", $res);
 curl_close($ch);
 return $captcha;
 }
-//$url = "https://flukelabs.com/pullfluke?partner=freebonk&user_id=47648";
-$url = "https://flukelabs.com/pullfluke?partner=fakechicken&user_id=17867";
+$url = "https://flukelabs.com/pullfluke?partner=freebonk&user_id=47648";
+//$url = "https://flukelabs.com/pullfluke?partner=fakechicken&user_id=17867";
 $response = curl_request($url, 'GET');
 
 $url = "https://flukelabs.com/ajax/fetchGames";
@@ -142,13 +153,10 @@ $url = "https://cryptovertz.com/";
 $data = "submit=Continue";
 $response = curl($url, 'POST', $data);
 
-while(true):
+p:
 $url = "https://cryptovertz.com/game.php?id=boxing-stars";
 $str = curl($url, 'GET');
 $lef = explode(' / 50</button>',explode('<button class="btn btn-danger">Limit: ', $str)[1])[0];
-
-
-	
 
 sleep(71);
 $capv = solveCaptcha();
@@ -157,16 +165,18 @@ $capv = solveCaptcha();
 $url = 'https://cryptovertz.com/rewards/reward.php';
 $data = "rcapchta_response=".$capv."";
 $response = curl($url, 'POST', $data);
+
 $suc = explode("<a class='btn btn-primary' href='rewards/start.php?",$response);
+$ren = $suc[0];
+if (strpos($response, "limit reached") !== false) {echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
 $user = explode('&crypto',explode('user=', $response)[1])[0];
-
-
 date_default_timezone_set('Asia/Jakarta');
 $timestamp = time();
 $wak = date("[H:i]", $timestamp);
-echo" ".$wak." [".$lef."] ".$suc[0]." \n";
+echo" ".$wak." ".$ren." \n";
 $url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
 $str = curl($url, 'GET');
-if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
-endwhile;
+//if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
+goto p;
 
+?>
