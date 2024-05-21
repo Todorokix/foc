@@ -44,8 +44,8 @@ function curl($url, $method, $data = null) {
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.7",
-        "X-Forwarded-For: 110.4.44.50",
+        "X-Forwarded-For: 223.28.52.71",
+        "X-Forwarded-For: 110.4.44.57",
         "user-agent: ".$vvv.""
     );
     $ch = curl_init();
@@ -74,8 +74,8 @@ function curl_request($url, $method, $data = null) {
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 223.28.52.7",
-        "X-Forwarded-For: 110.4.44.50",
+        "X-Forwarded-For: 223.28.52.71",
+        "X-Forwarded-For: 110.4.44.57",
         "user-agent: ".$vvv.""
     );
     $ch = curl_init();
@@ -138,6 +138,7 @@ $captcha = str_replace("OK|", "", $res);
 curl_close($ch);
 return $captcha;
 }
+yy:
 $url = "https://flukelabs.com/pullfluke?partner=freebonk&user_id=47648";
 //$url = "https://flukelabs.com/pullfluke?partner=fakechicken&user_id=17867";
 $response = curl_request($url, 'GET');
@@ -173,6 +174,7 @@ $user = explode('&crypto',explode('user=', $response)[1])[0];
 date_default_timezone_set('Asia/Jakarta');
 $timestamp = time();
 $wak = date("[H:i]", $timestamp);
+if($ren==""){goto yy;}
 echo" ".$wak." ".$ren." \n";
 $url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
 $str = curl($url, 'GET');
