@@ -71,10 +71,6 @@ return $captcha;
 }
 
 
-unlink('cookie.txt');
-$mnk = getName($n);
-$rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko) Brave X/".$mnk."";
 
 $repp = $mail[0];
 
