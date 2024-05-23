@@ -1,14 +1,21 @@
 <?php
-//system('clear');
 error_reporting(0);
+echo " HAPPY LOOTING!! \n";
 unlink('cookie.txt');
-$mail = array("igorsne@gmailod.com");
+
+
+$mail = array("bagskkkjb8@rjostre.com");
+
+
+$gg = rand(1,100);
+$xc = rand(1,100);
+$ipp = "".$gg.".106.9.".$xc;
 
 function curl_request($url, $method, $data = null) {
-	global $vvv;
+	global $ipp,$vvv;
     $header = array(
         "Host: megaclaimer.com",
-        "X-Forwarded-For: 102.56.122.8",
+        "X-Forwarded-For: ".$ipp."",
         "upgrade-insecure-requests: 1",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",      
