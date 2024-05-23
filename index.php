@@ -4,7 +4,7 @@ echo " HAPPY LOOTING!! \n";
 unlink('cookie.txt');
 
 
-$mail = array("bagskkkjb8@rjostre.com");
+$mail = array("allvisage8@izshirt.com");
 
 
 $gg = rand(1,100);
@@ -79,7 +79,7 @@ return $captcha;
 
 
 
-$repp = readline("Input email : ");
+$repp = $mail[0];
 
 
 $url = "https://megaclaimer.com/login.php";
