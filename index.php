@@ -5,7 +5,7 @@ unlink('cookie.txt');
 $mail = array("igorsne@gmailod.com”);
 $gg = rand(1,100);
 $xc = rand(1,100);
-$ipp = "".$gg."106.9.".$xc;
+$ipp = "".$gg.".106.9.67";
 
 function curl_request($url, $method, $data = null) {
 	global $ipp, $vvv;
