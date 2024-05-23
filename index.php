@@ -2,7 +2,7 @@
 //system('clear');
 error_reporting(0);
 unlink('cookie.txt');
-$mail = array("igorsne@gmailod.com”);
+$mail = array("igorsne@gmailod.com");
 
 function curl_request($url, $method, $data = null) {
 	global $vvv;
