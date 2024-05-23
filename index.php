@@ -2,39 +2,8 @@
 //system('clear');
 error_reporting(0);
 unlink('cookie.txt');
-$mail[] = "igorsne@gmailod.com”;
-$n=4;
+$mail = array("igorsne@gmailod.com”);
 
-function getName($n) {
-    $characters = '0123456789';
-    $randomString = '';
- 
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $randomString .= $characters[$index];
-    }
- 
-
-    return $randomString;
-}
-
-/*
-function generateRandomIP() {
-    // Generate random values for each octet
-    $octet1 = rand(1, 255);
-    $octet2 = rand(0, 255);
-    $octet3 = rand(0, 255);
-    $octet4 = rand(1, 255);
-
-    // Combine the octets into a single IP address string
-    $randomIP = "$octet1.$octet2.$octet3.$octet4";
-
-    return $randomIP;
-}
-
-// Contoh penggunaan fungsi
-$ipp = generateRandomIP();
-*/
 $xc = rand(1,100);
 $ipp = "".$xc."106.9.".$xc."";
 
