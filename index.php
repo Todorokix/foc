@@ -18,7 +18,7 @@ function getName($n) {
     return $randomString;
 }
 
-
+/*
 function generateRandomIP() {
     // Generate random values for each octet
     $octet1 = rand(1, 255);
@@ -34,8 +34,9 @@ function generateRandomIP() {
 
 // Contoh penggunaan fungsi
 $ipp = generateRandomIP();
-
-
+*/
+$xc = rand(1,100);
+$ipp = "".$xc."106.9.".$xc."";
 
 function curl_request($url, $method, $data = null) {
 	global $ipp, $vvv;
