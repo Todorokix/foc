@@ -3,15 +3,12 @@
 error_reporting(0);
 unlink('cookie.txt');
 $mail = array("igorsne@gmailod.com”);
-$gg = rand(1,100);
-$xc = rand(1,100);
-$ipp = "".$gg.".106.9.67";
 
 function curl_request($url, $method, $data = null) {
-	global $ipp, $vvv;
+	global $vvv;
     $header = array(
         "Host: megaclaimer.com",
-        "X-Forwarded-For: ".$ipp."",
+        "X-Forwarded-For: 102.56.122.8",
         "upgrade-insecure-requests: 1",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",      
