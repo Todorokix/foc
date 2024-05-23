@@ -79,7 +79,7 @@ return $captcha;
 
 
 
-$repp = $mail[0];
+$repp = readline("Input email : ");
 
 
 $url = "https://megaclaimer.com/login.php";
