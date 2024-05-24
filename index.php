@@ -143,7 +143,7 @@ $response = curl_request($url, 'GET');
 $url = "https://flukelabs.com/ajax/fetchGames";
 $res = curl_request($url, 'GET');
 $link = explode("', this" ,explode("redirectToAboutBlank('", $res)[1])[0];
-
+echo " $link \n";
 $gam = curl($link, 'GET');
 
 
