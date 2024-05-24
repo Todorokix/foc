@@ -2,7 +2,7 @@
 error_reporting(0);
 echo " HAPPY LOOTING!! \n";
 
-unlink('cookie.txt');
+//unlink('cookie.txt');
 
 
 $n=4;
@@ -55,8 +55,8 @@ function curl($url, $method, $data = null) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_COOKIE,TRUE);     
-    curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
-    curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
+    curl_setopt($ch, CURLOPT_COOKIEFILE,"Data/coki/cookie.txt");
+    curl_setopt($ch, CURLOPT_COOKIEJAR,"Data/coki/cookie.txt");
     if ($method === 'POST') {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -84,8 +84,8 @@ function curl_request($url, $method, $data = null) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_COOKIE,TRUE);     
-    curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
-    curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
+    curl_setopt($ch, CURLOPT_COOKIEFILE,"Data/coki/cookie.txt");
+    curl_setopt($ch, CURLOPT_COOKIEJAR,"Data/coki/cookie.txt");
     if ($method === 'POST') {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
