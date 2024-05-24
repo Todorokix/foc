@@ -2,7 +2,7 @@
 error_reporting(0);
 echo " HAPPY LOOTING!! \n";
 
-//unlink('cookie.txt');
+unlink('cookie.txt');
 
 
 $n=4;
@@ -27,12 +27,15 @@ $vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko)
 
 
 function curl($url, $method, $data = null) {
+	global $vvv;
     $header = array(
         "Host: cryptovertz.com",
+        "user-agent: $vvv",
         "origin: https://cryptovertz.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: 61.6.255.6"
+        "X-Forwarded-For: 211.47.25.42",
+        "X-Forwarded-For: 211.47.25.46"
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -54,12 +57,15 @@ function curl($url, $method, $data = null) {
 }
 
 function curl_request($url, $method, $data = null) {
+	global $vvv;
     $header = array(
         "Host: flukelabs.com",
+        "user-agent: $vvv",
         "origin: https://flukelabs.com",
         "content-type: application/x-www-form-urlencoded",
         "X-Requested-With: XMLHttpRequest",        
-        "X-Forwarded-For: 61.6.255.6"   
+        "X-Forwarded-For: 211.47.25.42",
+        "X-Forwarded-For: 211.47.25.46"
     );
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
