@@ -128,7 +128,7 @@ $response = curl_request($url, 'GET');
 $url = "https://flukelabs.com/ajax/fetchGames";
 $res = curl_request($url, 'GET');
 $link = explode("', this" ,explode("redirectToAboutBlank('", $res)[1])[0];
-if($link == ""){echo " stoped!! \n";sleep(99999);
+if($link == ""){echo " stoped!! \n";sleep(99999);}
 $gam = curl($link, 'GET');
 
 
@@ -136,7 +136,7 @@ $url = "https://cryptovertz.com/";
 $data = "submit=Continue";
 $response = curl($url, 'POST', $data);
 
-while(true):
+p:
 $url = "https://cryptovertz.com/game.php?id=boxing-stars";
 $str = curl($url, 'GET');
 $lef = explode(' / 50</button>',explode('<button class="btn btn-danger">Limit: ', $str)[1])[0];
@@ -161,6 +161,6 @@ $wak = date("[H:i]", $timestamp);
 echo" ".$wak." ".$ren." \n";
 $url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
 $str = curl($url, 'GET');
-if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
-endwhile;
-
+if($lef == "49"){echo "Complete!!! \n";sleep(99999);}
+goto p;
+?>
