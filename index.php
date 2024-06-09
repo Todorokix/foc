@@ -1,11 +1,26 @@
 <?php
 error_reporting(0);
-echo " HAPPY LOOTING!! \n";
+echo " •HAPPY LOOTING• \n";
+$n=4;
+function getName($n) {
+    $characters = '0123456789';
+    $randomString = ''; 
+    for ($i = 0; $i < $n; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $randomString .= $characters[$index];
+    }
+    return $randomString;
+}
+
+$mnk = getName($n);
+$rd = rand(0,999);
+$vvv = "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
+
 function solveCaptcha(){
 	global $vvv;
 a:
-$sit = "6LdpUzMnAAAAAEFrPfwSJ7FA1H31hZ4-2e-rAsx7";
-$login = "http://api.sctg.xyz/in.php?key=Gjd5MbFADqP0DlrurYrAmdIlQ9owqctV&method=userrecaptcha&googlekey=".$sit."&json=1&pageurl=https://cryptovertz.com/rewards/reward.php";
+$sit = "0x4AAAAAAAZWGl4XNAQLb9Uf";
+$login = "http://api.sctg.xyz/in.php?key=Gjd5MbFADqP0DlrurYrAmdIlQ9owqctV&method=turnstile&sitekey=".$sit."&json=1&pageurl=https://acryptominer.io/user/faucet";
 $ua[] = "User-Agent: ".$vvv."";
 $ua[] = "Content-Type: application/json";
 $ch = curl_init();
@@ -43,6 +58,7 @@ $captcha = str_replace("OK|", "", $hy);
 curl_close($ch);
 return $captcha;
 }
+
 function http_request($url, $method = 'GET', $data = null, $headers = []) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -51,8 +67,8 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
-    curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+    
     if (!empty($headers)) {
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     }
@@ -70,74 +86,28 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     return $response;
 }
 
-$n=4;
-function getName($n) {
-    $characters = '0123456789';
-    $randomString = ''; 
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $randomString .= $characters[$index];
-    }
-    return $randomString;
-}
-
-$mnk = getName($n);
-$rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
-function generateRandomIP() {
-    $octet1 = rand(1, 255);
-    $octet2 = rand(0, 255);
-    $octet3 = rand(0, 255);
-    $octet4 = rand(1, 255);
-    $randomIP = "$octet1.$octet2.$octet3.$octet4";
-    return $randomIP;
-}
-$ipx = generateRandomIP();
-$ipxx = generateRandomIP();
-
-
-x:
-$ar= array("6JZzRosxGZ");
-$user = $ar[0];
-
 $headers = [
-       "Host: cryptovertz.com",
-        "origin: https://cryptovertz.com",
+       "Host: acryptominer.io",
+        "origin: https://acryptominer.io",
         "content-type: application/x-www-form-urlencoded",
-        "X-Requested-With: XMLHttpRequest",
-        "X-Forwarded-For: $ipx, $ipxx",      
-        "user-agent: $vvv"
+        "Connection: keep-alive",
+        "Cookie: bitmedia_fid=eyJmaWQiOiI1ZDc5MDdjNDlhMDg0MGRhNGUxNjYxZGFhMzA4NmFjYSIsImZpZG5vdWEiOiIyZTI4Y2ZmYzIyOTljMjUzNDY2NDE4ZjM4ZDEyYWE2NyJ9; XSRF-TOKEN=eyJpdiI6IkRLMFFKeTVZOVZva2VTYnFjY0srWHc9PSIsInZhbHVlIjoiM0xHNHRHZDMzWjloOWlsU0JpQklyZDJaNnhXdms2ZmIxcHcrWlpCOVg5TlZ6NkhkMTB2OXhhTWppcm1icWZEYmZUV09uY1hXSE41K1JvQkppblNDTHhQZVYzcHArZXQyTmdTVEcyWTVkV0lXaytzcytZN1FrS29hMS9zMDJQRnQiLCJtYWMiOiIwMzIzNmI5OGRlMjgwYmE1NDUwODQwMmRhMzRjN2I5YjJiN2MxZDI5ZTczNTVjNmRkNjBjOWU1NTAyZGQ5ZGFhIiwidGFnIjoiIn0%3D; minelab_session=eyJpdiI6InRXUjJDRkRyNjA1VWNCbXROdis0K0E9PSIsInZhbHVlIjoiWTNWdXp0STZuOFVYRUwzbytYQmJ4eDhmVDk1eEd5Ym05NTVuNlhQUDdkY3pza1VnSTBnUXBmTEhzaXY3REZRckNEVDczNjEvY3FJTW9jYnh6MElweXJNSjlybjlNYVdyOHhzWk41Z1lFM2pMazBDekV0aXFYVGI3VmRHd25ENkoiLCJtYWMiOiJkOGNiMzE5NTM2ZDNlZWFlOTE5YTA3OWU3MTUzZWY3MmFiM2FiMmI5MjQ0NDJkOGU2ZTQzY2YwYjA1YTBhYTg5IiwidGFnIjoiIn0%3D",      
+        "user-agent: Mozilla/5.0 (Linux; Android 10; FRD-DL00 Build/QD4A.200805.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/94.0.4606.80 Mobile Safari/537.36"
 ];
-$url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
-$str = http_request($url, 'GET', null, $headers);
-$url = "https://cryptovertz.com/";
-$data = "submit=Continue";
-$response = http_request($url, 'POST', $data, $headers);
-
 while(true):
-$url = "https://cryptovertz.com/game.php?id=boxing-stars";
+$url = "https://acryptominer.io/user/faucet";
 $str = http_request($url, 'GET', null, $headers);
-$lef = explode(' / 50</button>',explode('<button class="btn btn-danger">Limit: ', $str)[1])[0];
-
-sleep(71);
-$capv = solveCaptcha();
-
-$url = 'https://cryptovertz.com/rewards/reward.php';
-$data = "rcapchta_response=".$capv."";
+$lef = explode('">',explode('<input type="hidden" name="_token" value="', $str)[1])[0];
+if($lef == ""){echo "csf hilang \n";sleep(99999);}
+$cap = solveCaptcha();
+$url = 'https://acryptominer.io/user/faucet';
+$data = "_token=".$lef."&cf-turnstile-response=".$cap."";
 $response = http_request($url, 'POST', $data, $headers);
-
-$suc = explode("<a class='btn btn-primary' href='rewards/start.php?",$response);
-$ren = $suc[0];
-if (strpos($response, "Invalid Claim") !== false) {goto x;}
-if (strpos($response, "FAILED") !== false) {goto x;}
-if (strpos($response, "limit reached") !== false) {echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
-//$user = explode('&crypto',explode('user=', $response)[1])[0];
+$res = explode('",',explode('message: "', $response)[1])[0];
 date_default_timezone_set('Asia/Jakarta');
 $timestamp = time();
 $wak = date("[H:i]", $timestamp);
-if (strpos($response, "been paid") !== false) {echo" ".$wak." ".$ren." : $user\n";}else{echo "Claim gagal! \n";goto x;}
-$url = "https://cryptovertz.com/rewards/start.php?partner=flukegames&user=".$user."&crypto=SHIB";
-$str = http_request($url, 'GET', null, $headers);
-//if($lef == "49"){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
+if (strpos($res, "successfully") !== false) {echo" ".$wak." ".$res." \n";sleep(302);}
+
 endwhile;
 ?>
