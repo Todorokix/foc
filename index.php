@@ -99,8 +99,7 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-    //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_COOKIE,TRUE);
     curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
     curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
     if (!empty($headers)) {
@@ -120,14 +119,7 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     return $response;
 }
 
-function generateRandomIP() {    
-    $octet1 = rand(1, 255);
-    $octet2 = rand(0, 255);
-    $octet3 = rand(0, 255);
-    $octet4 = rand(1, 255);
-    $randomIP = "$octet1.$octet2.$octet3.$octet4";
-    return $randomIP;
-}
+
 
 $n=5;
 function getName($n) {
@@ -145,13 +137,13 @@ zz:
 $mnk = getName($n);
 $rd = rand(0,999);
 $vvv = "Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
-$ipx = generateRandomIP();
+
 
 $headers = [
        "Host: acryptominer.io",
         "content-type: application/x-www-form-urlencoded",
         "Connection: keep-alive",      
-        "X-Forwarded-For: $ipx",
+        "origin: https://acryptominer.io",
         "user-agent: $vvv"
 ];
 
@@ -175,11 +167,11 @@ while(true):
 $url = "https://acryptominer.io/user/faucet";
 $str = http_request($url, 'GET', null, $headers);
 $site = explode('"',explode('<div class="cf-turnstile" data-sitekey="', $str)[1])[0];
-if($site=="0x4AAAAAAAZWGl4XNAQLb9Uf"){}else{echo "csf hilang \n";sleep(60);goto zz;}
+if($site=="0x4AAAAAAAZWGl4XNAQLb9Uf"){$cap = solveCaptcha();}else{echo "csf hilang \n";sleep(60);goto zz;}
 
 $lef = explode('">',explode('<input type="hidden" name="_token" value="', $str)[1])[0];
+sleep(5);
 
-$cap = solveCaptcha();
 $url = 'https://acryptominer.io/user/faucet';
 $data = "_token=".$lef."&cf-turnstile-response=".$cap."";
 $response = http_request($url, 'POST', $data, $headers);
@@ -188,7 +180,7 @@ $res = explode('",',explode('message: "', $response)[1])[0];
 date_default_timezone_set('Asia/Jakarta');
 $timestamp = time();
 $wak = date("[H:i]", $timestamp);
-if (strpos($res, "successfully") !== false) {echo" ".$wak." ".$res." \n";sleep(301);}else{echo " Claim Gagal! \n";}
+if (strpos($res, "successfully") !== false) {echo" ".$wak." ".$res." \n";sleep(307);}else{echo " Claim Gagal! \n";sleep(7);}
 
 endwhile;
 ?>
