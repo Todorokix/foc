@@ -1,151 +1,32 @@
 <?php
 error_reporting(0);
-echo " •HAPPY LOOTING• \n";
+echo " •••HAPPY LOOTING••• \n";
+$ar= array("5009");
+$n=4;
 
-$po = "4";
-
-function get($url){
-	global $vvv;
-
-  $header = array(
-     "User-Agent: $vvv",
-     
-     "upgrade-insecure-requests: 1",
-     "Connection: keep-alive"
-);
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-  return curl_exec($ch);
-}
-$result = get("https://raw.githubusercontent.com/Todorokix/api/main/dua.txt");
-$array = explode("\n", $result);
-$usern = $array[$po];
-echo " $usern \n";
-
-function http_get($url){
-	global $vvv;
-  $header = array(
-     "User-Agent: $vvv",
-     "Host: api.sctg.xyz",
-     "upgrade-insecure-requests: 1",
-     "Connection: keep-alive"
-);
-  $proxy = "socks5://kabbesul:qmp4dftcd06c@185.199.229.156:7492";
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-  curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-  curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
-  curl_setopt($ch, CURLOPT_PROXY, $proxy);       
-  curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-  return curl_exec($ch);
-}
-function recpt() {
-    $sit = "6Lcd0SYpAAAAAPZk7LMsCwVld1y8gAGhjbbHM5x1";
-    $key = "LtPy3TlWHBZFzxJTJDdr3SNC1T4a9H6B";
-    $loginUrl = "http://api.sctg.xyz/in.php?key=$key&method=userrecaptcha&googlekey=$sit&json=1&pageurl=https://acryptominer.io/user/login";
-
-    while (true) {        
-        $result = get($loginUrl);
-        $re = json_decode($result);
-        $id = $re->request ?? '';
-        if ($id == '') {
-            continue;
-        }
-        while (true) {
-            $url = "http://api.sctg.xyz/res.php?key=$key&action=get&id=$id";
-            $res = http_get($url);
-            if ($res == 'CAPCHA_NOT_READY') {
-                sleep(6);
-                continue;
-            }
-            if ($res == "ERROR_CAPTCHA_UNSOLVABLE") {
-                sleep(8);
-                break;
-            }
-            $cha = explode('|', $res);
-            if (isset($cha[1])) {
-                return $cha[1];
-            }
-            sleep(6);
-        }
+function getName($n) {
+    $characters = '0123456789';
+    $randomString = ''; 
+    for ($i = 0; $i < $n; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $randomString .= $characters[$index];
     }
+    return $randomString;
 }
 
-function solve() {
-    $sit = "6Lcd0SYpAAAAAPZk7LMsCwVld1y8gAGhjbbHM5x1";
-    $key = "LtPy3TlWHBZFzxJTJDdr3SNC1T4a9H6B";
-    $loginUrl = "http://api.sctg.xyz/in.php?key=$key&method=userrecaptcha&googlekey=$sit&json=1&pageurl=https://acryptominer.io/user/faucet";
+$mnk = getName($n);
+$rd = rand(0,999);
+$vvv = "Mozilla/5.0 (Linux; Android 2.3.6) AppleWebKit/533.1 (KHTML, like Gecko) edge X/".$mnk."";
 
-    while (true) {        
-        $result = get($loginUrl);
-        $re = json_decode($result);
-        $id = $re->request ?? '';
-        if ($id == '') {
-            continue;
-        }
-        while (true) {
-            $url = "http://api.sctg.xyz/res.php?key=$key&action=get&id=$id";
-            $res = http_get($url);
-            if ($res == 'CAPCHA_NOT_READY') {
-                sleep(6);
-                continue;
-            }
-            if ($res == "ERROR_CAPTCHA_UNSOLVABLE") {
-                sleep(8);
-                break;
-            }
-            $cha = explode('|', $res);
-            if (isset($cha[1])) {
-                return $cha[1];
-            }
-            sleep(6);
-        }
-    }
+function generateRandomIP() {
+    $octet1 = rand(1, 255);
+    $octet2 = rand(0, 255);
+    $octet3 = rand(0, 255);
+    $octet4 = rand(1, 255);
+    $randomIP = "$octet1.$octet2.$octet3.$octet4";
+    return $randomIP;
 }
-function solveCaptcha() {
-	global $site;
-	
-    $key = "LtPy3TlWHBZFzxJTJDdr3SNC1T4a9H6B";
-    $loginUrl = "http://api.sctg.xyz/in.php?key=$key&method=turnstile&sitekey=".$site."&json=1&pageurl=https://acryptominer.io/user/faucet";
-
-    while (true) {        
-        $result = get($loginUrl);
-        $re = json_decode($result);
-        $id = $re->request ?? '';
-        if ($id == '') {
-            continue;
-        }
-        while (true) {
-            $url = "http://api.sctg.xyz/res.php?key=$key&action=get&id=$id";
-            $res = http_get($url);
-            if ($res == 'CAPCHA_NOT_READY') {
-                sleep(6);
-                continue;
-            }
-            if ($res == "ERROR_CAPTCHA_UNSOLVABLE") {
-                sleep(8);
-                break;
-            }
-            $cha = explode('|', $res);
-            if (isset($cha[1])) {
-                return $cha[1];
-            }
-            sleep(6);
-        }
-    }
-}
-
-
+$ipp = generateRandomIP();
 
 function http_request($url, $method = 'GET', $data = null, $headers = []) {
     $ch = curl_init();
@@ -153,8 +34,7 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_COOKIE,TRUE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    
     curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
     curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
     if (!empty($headers)) {
@@ -174,96 +54,149 @@ function http_request($url, $method = 'GET', $data = null, $headers = []) {
     return $response;
 }
 
-
-$n=5;
-function getName($n) {
-    $characters = '0123456789';
-    $randomString = ''; 
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $randomString .= $characters[$index];
-    }
-    return $randomString;
-}
-
-zz:
-unlink('cookie.txt');
-function generateRandomIP() {
-    $octet1 = rand(1, 255);
-    $octet2 = rand(0, 255);
-    $octet3 = rand(0, 255);
-    $octet4 = rand(1, 255);
-    $randomIP = "$octet1.$octet2.$octet3.$octet4";
-    return $randomIP;
-}
-$ipp = generateRandomIP();
-
-$mnk = getName($n);
-$rd = rand(0,999);
-$vvv = "Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 X/".$mnk."";
-
-
 $headers = [
-       "Host: acryptominer.io",
-       "X-Forwarded-For: ".$ipp."",
+       "Host: excentiv.com",
         "content-type: application/x-www-form-urlencoded",
-        "Connection: keep-alive",      
-        "origin: https://acryptominer.io",
-        "user-agent: $vvv"
+        "X-Forwarded-For: $ipp",
+        "X-Forwarded-For: ".$ipp."",
+        "user-agent: ".$vvv.""
 ];
+
+$headers2 = [
+       "Host: coins-battle.com",
+        "content-type: application/x-www-form-urlencoded",
+        "X-Requested-With: XMLHttpRequest",
+        "X-Forwarded-For: ".$ipp."",
+        "user-agent: ".$vvv.""
+];
+
+function token(){
+	global $use, $headers;
+mk:
+$url = "https://excentiv.com/offerwall/?userid=".$use."&key=afU6b2HhtOAR1FiuSVsB";
+//$url = "https://excentiv.com/offerwall?userid=4b4b6bf41acc&key=5eaQHDSVYcwbdACp6ZB7";
+$of = http_request($url, 'GET', null, $headers);
+
+sleep(5);
+//if (strpos($of, "Games") === false) {echo" Game Hilang \n";sleep(99999);}
+$tokk = explode('"',explode('<button value="https://coins-battle.com?token=', $of)[1])[0];
+if($tokk==""){goto mk;}
+return $tokk;
+}
+function solveCaptcha(){
+	global $vvv;
+a:
+$sit = "6LdQN2wkAAAAAJcsc6u8xgog6ObX0icCRAowGiW8";
+$login = "http://sctg.xyz/in.php?key=LtPy3TlWHBZFzxJTJDdr3SNC1T4a9H6B&method=userrecaptcha&googlekey=".$sit."&json=1&pageurl=https://coins-battle.com/game/claimreward";
+$ua[] = "User-Agent: ".$vvv."";
+$ua[] = "Content-Type: application/json";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $login);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $ua);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+$result = curl_exec($ch);
+
+$re = json_decode($result);
+$id = $re->request;
+if($id==''){goto a;}
+c:
+$url = "http://api.sctg.xyz/res.php?key=LtPy3TlWHBZFzxJTJDdr3SNC1T4a9H6B&action=get&id=".$id."";
+$proxy = 'http://qhunsbzn:if51h5om5czo@38.154.227.167:5868';
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $ua);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+$res = curl_exec($ch);
+
+if ($res == 'CAPCHA_NOT_READY') {          
+        sleep(6);
+        goto c;
+    }
+if($res=="ERROR_CAPTCHA_UNSOLVABLE"){sleep(80);goto a;}
+
+$captcha = str_replace("OK|", "", $res);
+
+curl_close($ch);
+return $captcha;
+}
+
+
+
 function run(){
-	global $headers;
-$url = "https://acryptominer.io/user/faucet";
-$xxx = http_request($url, 'GET', null, $headers);
+	global $rac,$headers2;
 
-return $xxx;
+$url = "https://coins-battle.com/game/play/".$rac."";
+$red = http_request($url, 'GET', null, $headers2);
+return $red;
+}
+function runn(){
+	global $capv,$idd,$csf,$headers2;
+
+$url = 'https://coins-battle.com/game/claimreward';
+$data = "game_id=".$idd."&csrf_token=".$csf."&captcha=recaptchav2&g-recaptcha-response=".$capv."";
+$redi = http_request($url, 'POST', $data, $headers2);
+return $redi;
 }
 
-function dorr(){
-	global $lef,$cap,$cok,$headers;
-$url = 'https://acryptominer.io/user/faucet';
-$data = "_token=".$lef."&cf-turnstile-response=".$cap."&g-recaptcha-response=".$cok."";
-$response = http_request($url, 'POST', $data, $headers);
 
-return $response;
-}
+$ui = rand(1,12);
+$bb = 0;
 
-$url = "https://acryptominer.io/user/login";
-$str = http_request($url, 'GET', null, $headers);
-$tok = explode('">',explode('<input type="hidden" name="_token" value="', $str)[1])[0];
+xx:
 
-$capt = recpt();
 
-$url = "https://acryptominer.io/user/login";
-$data = "_token=".$tok."&username=".$usern."&password=Nung1234&g-recaptcha-response=".$capt."&remember=on";
-$response = http_request($url, 'POST', $data, $headers);
-$url = "https://acryptominer.io/user/dashboard";
-$das = http_request($url, 'GET', null, $headers);
-$bal = explode('POINT</h4>',explode('<h4 class="dashboard-widget__title">', $das)[1])[0];
-if($bal == ""){echo " Balance Hilang \n";sleep(60);goto zz;}
-echo " Balance: ".$bal." \n";
+//$ar= array("a5a4fd6959a8","292e41d76d32","b386b2cf6261","c8766322c32a");
 
+$use = $ar[$bb];
+echo "userid = ".$use." \n";
+if($use == ""){echo "Complete!!! \n";unlink('cookie.txt');sleep(99999);}
+unlink('cookie.txt');
+zz:
+$rot = token();
+$url = "https://coins-battle.com/?token=".$rot."";
+$bat = http_request($url, 'GET', null, $headers2);
+
+$rac = rand(1,12);
 while(true):
-mbx:
-$site = "0x4AAAAAAAZWGl4XNAQLb9Uf";
-$cok = solve();
-$cap = solveCaptcha();
-
-$gg = run();
-$sitte = explode('"',explode('<div class="cf-turnstile" data-sitekey="', $gg)[1])[0];
-if($sitte=="0x4AAAAAAAZWGl4XNAQLb9Uf"){}else{echo "csf hilang \n";sleep(60);goto zz;}
-$lef = explode('">',explode('<input type="hidden" name="_token" value="', $gg)[1])[0];
 sleep(1);
-$pot = dorr();
-$res = explode('",',explode('message: "', $pot)[1])[0];
+$btc = run();
+$con = explode(' </b>&nbsp;',explode('<b class="gradient-text">Website: ', $btc)[1])[0];
+if($con == ""){echo " not connect! \n";$bb=$bb;goto zz;}
+if(isset($con)) {
+    $dx="ON";
+}
+//$sit = explode('"',explode('<div class="g-recaptcha" data-sitekey="', $btc)[1])[0];
+$idd = explode('">',explode('<input type="hidden" name="game_id" value="', $btc)[1])[0];
+$csf = explode('">',explode('<input type="hidden" name="csrf_token" value="', $btc)[1])[0];
+$tim = explode("';",explode("let ctimer = '", $btc)[1])[0];
+$lef = explode(' today',explode('<p><b>You have already play ', $btc)[1])[0];
+if($lef=="70/70"){$bb=$bb+1;unlink('cookie.txt');goto xx;}
+
+$capv = solveCaptcha();
+$las = runn();
+
+$suc = explode(', to continue earning',explode('<div class="alert text-center alert-success"><i class="fa fa-check-circle"></i> ', $las)[1])[0];
 date_default_timezone_set('Asia/Jakarta');
 $timestamp = time();
 $wak = date("[H:i]", $timestamp);
-if (strpos($res, "Max") !== false) {echo" ".$wak." ".$res." Max Daily!!\n";sleep(999999);}
-if (strpos($res, "successfully") !== false) {echo" ".$wak." ".$res." \n";}else{echo " Claim Gagal! ".$res." \n";sleep(60);goto mbx;}
-$tim = explode(';',explode('var timeUntilNextClaim = ', $pot)[1])[0];
-if ($tim > 0) {
-    sleep($tim);
-}
+
+if (strpos($suc, "obtained") !== false) {echo"[".$dx."] ".$wak."  [".$lef."] $suc \n";}
+
+sleep(71);
+
+if($lef=="69/70"){$bb=$bb+1;unlink('cookie.txt');goto xx;}
+
+
 endwhile;
+
+
+
+
+
+
 ?>
