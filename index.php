@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 echo " •••HAPPY LOOTING••• \n";
-$ar= array("5009");
+$ar= array("577");
 $n=4;
 
 function getName($n) {
@@ -73,7 +73,7 @@ $headers2 = [
 function token(){
 	global $use, $headers;
 mk:
-$url = "https://excentiv.com/offerwall/?userid=".$use."&key=afU6b2HhtOAR1FiuSVsB";
+$url = "https://excentiv.com/offerwall/?userid=".$use."&key=CcWgeGYjnrIqhAUZdzVf";
 //$url = "https://excentiv.com/offerwall?userid=4b4b6bf41acc&key=5eaQHDSVYcwbdACp6ZB7";
 $of = http_request($url, 'GET', null, $headers);
 
